@@ -1,26 +1,24 @@
 <?php
-/* name: titlescrape.php
-   Used by: bk.php
-   This file will take in a php var ($pageinfo)
-   
+/*
+    name: titlescrape.php
+    Used by: index.php
+    This file will take in a php var ($pageinfo) 
 */
 function domain_check($domain) { 
-  $data = $domain; 
-  // Create a curl handle to a non-existing location 
-  $ch = curl_init($data); 
-  // Execute 
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-  // - TESTING //////////////////
-  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-  curl_setopt($ch, CURLOPT_MAXREDIRS, 3);
+    $data = $domain; 
+    // Create a curl handle to a non-existing location 
+    $ch = curl_init($data); 
+    // Execute 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_MAXREDIRS, 3);
  
-  $bob = curl_exec($ch); 
-  // Check if any error occured 
-  if(curl_errno($ch)) 
-  { 
-     echo 'Curl Error: ' . curl_error($ch); 
-  } else { 
-     return $bob; 
+    $curlresult = curl_exec($ch); 
+    // Check if any error occured 
+    if(curl_errno($ch)) { 
+        echo 'Curl Error: ' . curl_error($ch); 
+    } else { 
+        return $curlresult; 
   } 
   // Close handle 
   curl_close($ch); 
@@ -85,8 +83,6 @@ if($pageinfo){
   } 
 
 /*
-// --- NOTES ---
-
 //$myreg = '/<%TAG%[^>]*>(.*?)</%TAG%>/';
 function get_tag( $tag, $xml ) {
   $tag = preg_quote($tag);
@@ -94,7 +90,6 @@ function get_tag( $tag, $xml ) {
                    $xml,
                    $matches,
                    PREG_PATTERN_ORDER);
-
   return $matches[1];
 }
 */
@@ -105,22 +100,4 @@ if(!$dresponse){
   echo "</body>";
   echo "</html>";
 }
-
-/*
-if($pageinfo){
-    $dom = new DOMDocument();
-    // this was loadHTML($dresponse);
-    @$dom->loadHTML($dresponse);
-
-    //create an empty array to store data
-    $links = array();
-    // loop through the data to store in array
-    foreach($dom->getElementsByTagName('title') as $link){
-        //$links[] = array('url' => $link->getAttribute('href'), 'text' => $link->nodeValue);
-        $links[] = array('text' => $link->nodeValue);
-    }
-    //print_r($links);
-    echo $links[0]['text'];
-}
- */
 ?>
