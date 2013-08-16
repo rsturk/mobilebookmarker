@@ -6,7 +6,7 @@ This project is a mobile webpage that allows the user to easily add bookmarks to
 
 Once you provide a URL this app loads the webpage's title and any tags that have already been used on Delicious.com for the URL.
 
-###To use:
+###Getting Started:
 
 Copy the project to a webserver that has PHP running. And you're ready to start bookmarking.
 
