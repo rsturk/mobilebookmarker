@@ -22,7 +22,7 @@ Paste a URL that you would like to bookmark, hit next and save.
 
 ---
 
-Things that I hope to add:
+###Things that I hope to add:
 - Better authentication
 - The ability to choose to bookmark to [Pinboard.in](http://pinboard.in), [Delicious.com](http://www.Delicious.com), or both
 
